@@ -281,6 +281,7 @@ func main() {
 	log.Infof("Preparing project")
 
 	if configs.ReAddPlatform == "true" {
+		log.Infof("Preparing project (add/rm")
 		platformRemoveCmd := builder.PlatformCommand("rm")
 		platformRemoveCmd.SetStdout(os.Stdout)
 		platformRemoveCmd.SetStderr(os.Stderr)
@@ -290,16 +291,27 @@ func main() {
 		if err := platformRemoveCmd.Run(); err != nil {
 			fail("cordova failed, error: %s", err)
 		}
-	}
 
-	platformAddCmd := builder.PlatformCommand("add")
-	platformAddCmd.SetStdout(os.Stdout)
-	platformAddCmd.SetStderr(os.Stderr)
+		platformAddCmd := builder.PlatformCommand("add")
+		platformAddCmd.SetStdout(os.Stdout)
+		platformAddCmd.SetStderr(os.Stderr)
 
-	log.Donef("$ %s", platformAddCmd.PrintableCommandArgs())
+		log.Donef("$ %s", platformAddCmd.PrintableCommandArgs())
 
-	if err := platformAddCmd.Run(); err != nil {
-		fail("cordova failed, error: %s", err)
+		if err := platformAddCmd.Run(); err != nil {
+			fail("cordova failed, error: %s", err)
+		}
+	} else {
+		log.Infof("Preparing project (prepare)")
+		prepareCmd := builder.PrepareCommand()
+		prepareCmd.SetStdout(os.Stdout)
+		prepareCmd.SetStderr(os.Stderr)
+
+		log.Donef("$ %s", prepareCmd.PrintableCommandArgs())
+
+		if err := prepareCmd.Run(); err != nil {
+			fail("cordova failed, error: %s", err)
+		}
 	}
 
 	// cordova build

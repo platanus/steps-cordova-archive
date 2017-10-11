@@ -83,3 +83,9 @@ func (builder *Model) BuildCommand() *command.Model {
 	cmdSlice := builder.commandSlice("build")
 	return command.New(cmdSlice[0], cmdSlice[1:]...)
 }
+
+// PrepareCommand ...
+func (builder *Model) PrepareCommand() *command.Model {
+	cmdSlice := builder.commandSlice("prepare")
+	return command.New(cmdSlice[0], cmdSlice[1:]...)
+}

@@ -1,15 +1,15 @@
 {
 	"ImportPath": "github.com/bitrise-steplib/steps-cordova-archive",
 	"GoVersion": "go1.8",
-	"GodepVersion": "v79",
+	"GodepVersion": "v74",
 	"Packages": [
 		"./..."
 	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/bitrise-community/steps-cordova-archive/cordova",
-			"Comment": "0.9.2",
-			"Rev": "30035e80b2596941b263fc0b96efafee47fdc074"
+			"Comment": "1.0.0",
+			"Rev": "e39d64e77951f2de2c0790946853f74c30f88454"
 		},
 		{
 			"ImportPath": "github.com/bitrise-io/go-utils/colorstring",
